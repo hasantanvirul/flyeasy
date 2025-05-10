@@ -38,3 +38,9 @@
     transform: rotate(360deg);
   }
 }
+.hometop{
+  background-image: url("../src/assets/images/background.png");
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+}

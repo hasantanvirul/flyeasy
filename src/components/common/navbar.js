@@ -39,7 +39,7 @@ const Navbar = () => {
             <Moon size={20} />
           )}
         </button>
-        <button 
+        {/* <button 
           className={`rounded-lg py-2 px-3 transition-colors duration-300 ${
             darkMode 
               ? "bg-slate-600 hover:bg-slate-200 hover:text-black" 
@@ -47,7 +47,7 @@ const Navbar = () => {
           }`}
         >
           Sign In
-        </button>
+        </button> */}
       </div>
     </nav>
   );

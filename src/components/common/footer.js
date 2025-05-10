@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
 import logoColored from '../../assets/images/logoColored.svg';
 import { ThemeContext } from "../../context/ThemeContext";
 import logoWhite from "../../assets/images/logoWhite.svg";
 
 const Footer = () => {
   const { darkMode } = useContext(ThemeContext);
-  
-  // Popular destinations that people might search for
+
   const popularDestinations = [
     { name: 'New York', path: '/flights/new-york' },
     { name: 'London', path: '/flights/london' },
@@ -20,9 +18,8 @@ const Footer = () => {
     { name: 'Singapore', path: '/flights/singapore' },
   ];
 
-  // Get current year for copyright
   const currentYear = new Date().getFullYear();
-
+  
   return (
     <footer className={`duration-300 ${
       darkMode 
