@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --primarydark: #202124;
+  --primarygrey: #3c4043;
+}
+
 
 body {
   margin: 0;
