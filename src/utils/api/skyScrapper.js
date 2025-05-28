@@ -250,26 +250,26 @@ const generateMockFlightData = (fromCode, toCode, departureDate, returnDate, cab
     { name: "Air France", code: "AF", logo: "https://www.gstatic.com/flights/airline_logos/70px/AF.png" }
   ];
   
-  // Create between 5-10 mock flights
+  
   const numFlights = Math.floor(Math.random() * 6) + 5;
   const flights = [];
   
   for (let i = 0; i < numFlights; i++) {
-    // Random airline
+ 
     const airline = airlines[Math.floor(Math.random() * airlines.length)];
     
-    // Random flight number
+   
     const flightNumber = `${airline.code}${Math.floor(Math.random() * 1000) + 1000}`;
     
-    // Random departure time (between 6AM and 10PM)
+   
     const depHour = Math.floor(Math.random() * 16) + 6;
     const depMin = Math.floor(Math.random() * 60);
     const depTime = `${depHour.toString().padStart(2, '0')}:${depMin.toString().padStart(2, '0')}`;
     
-    // Random duration between 1h30m and 8h
+
     const durationMins = Math.floor(Math.random() * 390) + 90;
     
-    // Calculate arrival time
+
     const depDate = new Date(departureDate);
     depDate.setHours(depHour, depMin);
     const arrDate = new Date(depDate.getTime() + durationMins * 60000);
@@ -287,7 +287,7 @@ const generateMockFlightData = (fromCode, toCode, departureDate, returnDate, cab
       case 'first':
         basePrice = Math.floor(Math.random() * 2000) + 2500;
         break;
-      default: // economy
+      default:
         basePrice = Math.floor(Math.random() * 200) + 200;
     }
     
@@ -317,7 +317,7 @@ const generateMockFlightData = (fromCode, toCode, departureDate, returnDate, cab
       airline: airline,
       flight_number: flightNumber,
       price: {
-        total: basePrice + (stops * 50), // Cheaper for direct flights
+        total: basePrice + (stops * 50), 
         currency: 'USD'
       },
       cabin_class: cabinClass

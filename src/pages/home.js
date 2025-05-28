@@ -19,7 +19,7 @@ const Home = () => {
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
   const [locationError, setLocationError] = useState(null);
 
-  // New states for handling flight search
+
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
@@ -49,14 +49,14 @@ const Home = () => {
         try {
           const { latitude, longitude } = position.coords;
 
-          // Attempt to get city name from coordinates using reverse geocoding
+          
           const response = await fetch(
             `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10`
           );
 
           if (response.ok) {
             const data = await response.json();
-            // Extract city name from address components
+           
             const city =
               data.address.city ||
               data.address.town ||
@@ -71,7 +71,7 @@ const Home = () => {
               );
             }
           } else {
-            // If reverse geocoding fails, just use the coordinates
+          
             setFromLocation(`${latitude.toFixed(4)}, ${longitude.toFixed(4)}`);
           }
         } catch (error) {
@@ -101,13 +101,13 @@ const Home = () => {
     );
   };
 
-  // Extract airport codes from location strings
+  
   const extractAirportCode = (locationString) => {
     const match = locationString.match(/\(([A-Z]{3})\)/);
     return match ? match[1] : locationString;
   };
 
-  // Format date to YYYY-MM-DD
+ 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toISOString().split('T')[0];
@@ -148,10 +148,10 @@ const Home = () => {
       const results = await searchFlights(searchParams);
       setSearchResults(results);
       
-      // Log success message with result count
+      
       console.log(`Found ${results.length} flights matching search criteria`);
       
-      // Scroll to results
+    
       setTimeout(() => {
         window.scrollTo({
           top: document.querySelector('.home').scrollHeight / 2,
@@ -171,7 +171,7 @@ const Home = () => {
   const handleSearchError = (error) => {
     console.error("Flight search error:", error);
     
-    // Provide more user-friendly error messages based on common issues
+   
     if (error.message?.includes("Missing required search parameters")) {
       return "Please fill in all required fields (From, To, and Departure date).";
     } else if (error.message?.includes("Network")) {
@@ -184,14 +184,14 @@ const Home = () => {
     
     return error.message || "Failed to search flights. Please try again.";
   };
-  // Format duration from minutes to hours and minutes
+
   const formatDuration = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return `${hours}h ${mins}m`;
   };
 
-  // Format price
+
   const formatPrice = (price, currency = "USD") => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -199,7 +199,7 @@ const Home = () => {
     }).format(price);
   };
   
-  // Sort flights based on selected option
+
   const sortFlights = (flights) => {
     if (!flights) return [];
     
